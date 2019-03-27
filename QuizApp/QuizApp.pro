@@ -27,11 +27,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    question.cpp
+    question.cpp \
+    filereader.cpp
 
 HEADERS += \
         mainwindow.h \
-    question.h
+    question.h \
+    filereader.h
 
 FORMS += \
         mainwindow.ui
