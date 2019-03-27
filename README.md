@@ -1,2 +1,2 @@
 # QuizApp
-Quiz application.
+Quiz application written in QT. In progress.
