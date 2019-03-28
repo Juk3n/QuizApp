@@ -15,8 +15,13 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void loadQuestion();
 };
 
 #endif // MAINWINDOW_H

@@ -1,28 +1,29 @@
 #include "filereader.h"
 
-#include <fstream>
+#include <QFile>
 
 FileReader::FileReader()
 {
 
 }
 
-QString FileReader::getTextFromFile(QString fileName)
+QString FileReader::getTextFromFile(std::string fileName)
 {
-    std::ifstream file{};
-    file.open(fileName.toStdString(), std::ios::out);
+    QFile file{"D:/Question.txt"};
+    //std::ifstream file{"Question.txt", std::ifstream::in};
+    //file.open("Question.txt", std::ifstream::in);
 
-    if(!file.is_open())
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        return "";
+        return QString::fromStdString(fileName);
     }
 
-    std::string finalString{};
-    std::string line{};
-    while(std::getline(file, line))
+    std::string finalText{};
+    while(!file.atEnd())
     {
-        finalString.append(line);
+        QByteArray line = file.readLine();
+        finalText.append(line.toStdString());
     }
 
-    return QString::fromStdString(finalString);
+    return QString::fromStdString(finalText);
 }
