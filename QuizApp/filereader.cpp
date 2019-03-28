@@ -7,15 +7,12 @@ FileReader::FileReader()
 
 }
 
-QString FileReader::getTextFromFile(std::string fileName)
+QString FileReader::getTextFromFile(QString fileName)
 {
-    QFile file{"D:/Question.txt"};
-    //std::ifstream file{"Question.txt", std::ifstream::in};
-    //file.open("Question.txt", std::ifstream::in);
-
+    QFile file{fileName};
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        return QString::fromStdString(fileName);
+        return fileName;
     }
 
     std::string finalText{};

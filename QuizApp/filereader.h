@@ -8,7 +8,7 @@ class FileReader
 {
 public:
     FileReader();
-    static QString getTextFromFile(std::string fileName);
+    static QString getTextFromFile(QString fileName);
 };
 
 #endif // FILEREADER_H
