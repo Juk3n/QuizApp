@@ -21,7 +21,7 @@ void Question::convertTextFromFileToQuestionAndAnswers(QString textFromFile)
             line = QString{};
         }
 
-        if(lines.size() == 4)
+        if(lines.size() == 5)
         {
             break;
         }
@@ -31,6 +31,7 @@ void Question::convertTextFromFileToQuestionAndAnswers(QString textFromFile)
     answers[0] = lines.at(1);
     answers[1] = lines.at(2);
     answers[2] = lines.at(3);
+    correctAnswerIndex = lines.at(4).toInt();
 }
 
 Question::Question()
@@ -47,4 +48,9 @@ QString Question::getQuestionText()
 QString Question::getAnswerText(int answerIndex)
 {
     return answers[answerIndex];
+}
+
+int32_t Question::getCorrectAnswerIndex()
+{
+    return correctAnswerIndex;
 }
