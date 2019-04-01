@@ -12,8 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->answerButton1, SIGNAL(clicked(bool)), this, SLOT(onButton1Clicked()));
     connect(ui->answerButton2, SIGNAL(clicked(bool)), this, SLOT(onButton2Clicked()));
     connect(ui->answerButton3, SIGNAL(clicked(bool)), this, SLOT(onButton3Clicked()));
+    connect(ui->nextQuestionButton, SIGNAL(clicked(bool)), this, SLOT(onNxtQstnBtnClicked()));
 
-    loadQuestion();
+    loadQuestion(questionNumber);
 }
 
 MainWindow::~MainWindow()
@@ -54,9 +55,17 @@ void MainWindow::onButton3Clicked()
     }
 }
 
-void MainWindow::loadQuestion()
+void MainWindow::onNxtQstnBtnClicked()
 {
-    Question question{};
+    questionNumber++;
+    loadQuestion(questionNumber);
+}
+
+
+
+void MainWindow::loadQuestion(int32_t questionNumber)
+{
+    Question question{questionNumber};
     ui->questionLabel->setText(question.getQuestionText());
     ui->answerButton1->setText(question.getAnswerText(0));
     ui->answerButton2->setText(question.getAnswerText(1));

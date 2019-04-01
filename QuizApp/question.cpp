@@ -4,6 +4,7 @@
 
 #include <QString>
 #include <vector>
+#include <sstream>
 
 void Question::convertTextFromFileToQuestionAndAnswers(QString textFromFile)
 {
@@ -34,9 +35,14 @@ void Question::convertTextFromFileToQuestionAndAnswers(QString textFromFile)
     correctAnswerIndex = lines.at(4).toInt();
 }
 
-Question::Question()
+Question::Question(int32_t questionNumber)
 {
-    QString textFromFile{FileReader::getTextFromFile("D:/Question.txt")};
+    std::stringstream fileNameToBuild{};
+    fileNameToBuild << "D:/Question" << questionNumber << ".txt";
+
+    std::string fileName = fileNameToBuild.str();
+
+    QString textFromFile{FileReader::getTextFromFile(QString::fromStdString(fileName))};
     convertTextFromFileToQuestionAndAnswers(textFromFile);
 }
 

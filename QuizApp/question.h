@@ -11,7 +11,7 @@ class Question
 
     void convertTextFromFileToQuestionAndAnswers(QString textFromFile);
 public:
-    Question();
+    Question(int32_t questionNumber);
     QString getQuestionText();
     QString getAnswerText(int answerIndex);
     int32_t getCorrectAnswerIndex();
