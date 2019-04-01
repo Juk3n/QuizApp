@@ -25,9 +25,11 @@ private:
     Ui::MainWindow *ui;
     int32_t correctAnswerIndex{};
     int32_t questionNumber{};
+    QString questionSourceFolder{};
 
 private slots:
     void loadQuestion(int questionNumber);
+    void resetQuestionsButtonsView();
 };
 
 #endif // MAINWINDOW_H

@@ -3,6 +3,8 @@
 #include "filereader.h"
 #include "question.h"
 
+#include <QInputDialog>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -13,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->answerButton2, SIGNAL(clicked(bool)), this, SLOT(onButton2Clicked()));
     connect(ui->answerButton3, SIGNAL(clicked(bool)), this, SLOT(onButton3Clicked()));
     connect(ui->nextQuestionButton, SIGNAL(clicked(bool)), this, SLOT(onNxtQstnBtnClicked()));
+
+    questionSourceFolder = QInputDialog::getText(this, "Question Files", "Where are questions?");
 
     loadQuestion(questionNumber);
 }
@@ -58,14 +62,20 @@ void MainWindow::onButton3Clicked()
 void MainWindow::onNxtQstnBtnClicked()
 {
     questionNumber++;
+    resetQuestionsButtonsView();
     loadQuestion(questionNumber);
 }
 
-
+void MainWindow::resetQuestionsButtonsView()
+{
+    ui->answerButton1->setStyleSheet("QPushButton{background-color: rgb(90, 90, 90) }");
+    ui->answerButton2->setStyleSheet("QPushButton{background-color: rgb(90, 90, 90) }");
+    ui->answerButton3->setStyleSheet("QPushButton{background-color: rgb(90, 90, 90) }");
+}
 
 void MainWindow::loadQuestion(int32_t questionNumber)
 {
-    Question question{questionNumber};
+    Question question{questionSourceFolder, questionNumber};
     ui->questionLabel->setText(question.getQuestionText());
     ui->answerButton1->setText(question.getAnswerText(0));
     ui->answerButton2->setText(question.getAnswerText(1));

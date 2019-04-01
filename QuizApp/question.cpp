@@ -35,10 +35,10 @@ void Question::convertTextFromFileToQuestionAndAnswers(QString textFromFile)
     correctAnswerIndex = lines.at(4).toInt();
 }
 
-Question::Question(int32_t questionNumber)
+Question::Question(QString questionsSourceFolder, int32_t questionNumber)
 {
     std::stringstream fileNameToBuild{};
-    fileNameToBuild << "D:/Question" << questionNumber << ".txt";
+    fileNameToBuild << questionsSourceFolder.toStdString() << "/Question" << questionNumber << ".txt";
 
     std::string fileName = fileNameToBuild.str();
 
