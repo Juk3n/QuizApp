@@ -1,6 +1,6 @@
 # QuizApp
 Quiz application written in QT. In progress.
 
-<b>Question Template.
+<b>Question Template.</b>
   
-<i>text of the question#first answer#second answer#third answer#number of a good answer(1v2v3)#
+<i>text of the question#first answer#second answer#third answer#number of a good answer(1v2v3)#</i>
