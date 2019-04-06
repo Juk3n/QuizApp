@@ -37,13 +37,20 @@ void Question::convertTextFromFileToQuestionAndAnswers(QString textFromFile)
 
 Question::Question(QString questionsSourceFolder, int32_t questionNumber)
 {
-    std::stringstream fileNameToBuild{};
-    fileNameToBuild << questionsSourceFolder.toStdString() << "/Question" << questionNumber << ".txt";
+    try {
+        std::stringstream fileNameToBuild{};
+        fileNameToBuild << questionsSourceFolder.toStdString() << "/Question" << questionNumber << ".txt";
 
-    std::string fileName = fileNameToBuild.str();
+        std::string fileName = fileNameToBuild.str();
 
-    QString textFromFile{FileReader::getTextFromFile(QString::fromStdString(fileName))};
-    convertTextFromFileToQuestionAndAnswers(textFromFile);
+        QString textFromFile{FileReader::getTextFromFile(QString::fromStdString(fileName))};
+        convertTextFromFileToQuestionAndAnswers(textFromFile);
+    } catch (...) {
+        QMessageBox msgBox{};
+        msgBox.setText("Koniec pytań");
+        msgBox.exec();
+        exit(0);
+    }
 }
 
 QString Question::getQuestionText()
