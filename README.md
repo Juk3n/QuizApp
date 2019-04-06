@@ -1,5 +1,5 @@
 # QuizApp
-Quiz application written in QT. In progress.
+Quiz application written in QT.
 
 This message shows up at the beginning.<br>
 ![alt text](GetQuestionsFolderMessageBox.png)<br>
