@@ -3,6 +3,7 @@
 #include "filereader.h"
 
 #include <QString>
+#include <QMessageBox>
 #include <vector>
 #include <sstream>
 
@@ -47,7 +48,7 @@ Question::Question(QString questionsSourceFolder, int32_t questionNumber)
         convertTextFromFileToQuestionAndAnswers(textFromFile);
     } catch (...) {
         QMessageBox msgBox{};
-        msgBox.setText("Koniec pytań");
+        msgBox.setText("End of questions");
         msgBox.exec();
         exit(0);
     }
